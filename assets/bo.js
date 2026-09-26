@@ -1,6 +1,6 @@
 /* BeOFF · web del equipo · utilidades comunes (clave, API, refresco en vivo) */
 window.MB = (function () {
-var API = '__API_URL__';
+var API = 'https://script.google.com/macros/s/AKfycbzpUsrelj7JG3gqtZ0YzYBtLo_hnwJWal-yzv87WOPHhPiGk2nVQi75k_VV7e4hC6Yn6Q/exec';
 var LS = 'bo_key';
 function getKey() { try { return localStorage.getItem(LS) || ''; } catch (e) { return ''; } }
 function setKey(k) { try { k ? localStorage.setItem(LS, k) : localStorage.removeItem(LS); } catch (e) {} }
