@@ -1,0 +1,103 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Mapa de ubicaciones · BeOFF 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#ffffff;--panel:#ffffff;--ink:#000000;--sub:#3a3a3a;--hair:rgba(0,0,0,.20);--orange:#b8703f}
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans",Arial,sans-serif}
+  #wrap{padding:14px 14px 28px;max-width:1980px}
+  h1{font-family:"Barlow Condensed",Arial,sans-serif;text-transform:uppercase;letter-spacing:.02em;font-weight:800;font-size:26px;margin:0 0 3px}
+  .sub{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.03em;color:var(--sub);margin:0 0 12px;text-transform:uppercase}
+  .sub b{color:var(--orange);font-weight:600}
+  .rule{height:2px;background:linear-gradient(90deg,var(--orange) 0%,var(--orange) 40px,var(--hair) 40px);margin-bottom:14px}
+  #stage-frame{position:relative;border:1px solid var(--hair);border-radius:3px;background:var(--panel);padding:1px}
+  #stage{overflow:auto;-webkit-overflow-scrolling:touch}
+  #stage svg{width:100%;min-width:900px;height:auto;display:block}
+  svg text{font-family:"IBM Plex Sans",Arial,sans-serif}
+  .esq-tag{display:inline-block;vertical-align:middle;margin-left:12px;font-family:"Barlow Condensed",Arial Narrow,Arial,sans-serif;font-weight:800;font-size:.72em;letter-spacing:.06em;text-transform:uppercase;background:#ffd23f;color:#231a00;border-radius:5px;padding:2px 13px 3px}
+  .hint{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--sub);margin:8px 0 0}
+  .titleblock{margin-top:9px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--sub);letter-spacing:.03em}
+  .titleblock b{color:var(--ink);font-weight:600}
+</style></head><body style="margin:0"><div style="position:sticky;top:0;z-index:99;background:#fff;padding:8px 12px;border-bottom:1px solid #ddd;display:flex;gap:10px;align-items:center;font:700 14px system-ui"><a href="../cuando-me-toca/" style="background:#1d5fd1;color:#fff;text-decoration:none;padding:7px 12px;border-radius:8px">← Volver</a>Mapa de ubicaciones · BeOFF 2026</div>
+<div id="wrap">
+<h1>BeOFF Offroad Festival 2026 — Mapa general del Paddock<span class="esq-tag">Ubicaciones</span></h1>
+<p class="sub">Dónde va cada cosa en la explanada de <b>Kini Motor Park</b> · sábado 14/11/2026 · <b>Proyecto: BeOFF</b></p>
+<div class="rule"></div>
+  <div id="stage-frame">
+    <div id="stage"></div>
+  </div>
+<p class="hint">En el móvil, desliza el mapa de lado para verlo entero. Pellizca para ampliar.</p>
+<p class="titleblock"><span>BeOFF Offroad Festival 2026 · Mapa general del Paddock · Esquema <b>Ubicaciones</b></span><span>Rev. <b>v7</b> · 09/11/2026 · <b>XG Concept</b></span></p>
+</div>
+<script>
+(function(){
+var CFG={K:1.4625,W:1600,H:920};
+var CUR='base';var K=CFG.K,NS='http://www.w3.org/2000/svg';
+var svg=document.createElementNS(NS,'svg');svg.setAttribute('viewBox','0 0 '+CFG.W+' '+CFG.H);svg.setAttribute('xmlns',NS);
+document.getElementById('stage').appendChild(svg);
+function el(n,a,t){var e=document.createElementNS(NS,n);e.setAttribute('data-k',CUR);for(var k in a)e.setAttribute(k,a[k]);if(t!=null)e.textContent=t;svg.appendChild(e);return e;}
+function P(pts){return pts.map(function(p){return (p[0]*K).toFixed(1)+','+(p[1]*K).toFixed(1)}).join(' ');}
+var INK='#141413',SUB='#55585c',COTA='#b8703f',OR='#ff5a1f';
+var DISP="'Barlow Condensed',sans-serif",MONO="'IBM Plex Mono',monospace";
+function T(x,y,s,o){o=o||{};return el('text',{x:x,y:y,'font-family':o.mono?MONO:DISP,'font-size':o.size||18,'font-weight':o.w||(o.mono?500:800),fill:o.fill||INK,'text-anchor':o.anchor||'middle','letter-spacing':o.mono?'.3':'.6',stroke:o.nohalo?'none':'#ffffff','stroke-width':o.nohalo?0:4,'paint-order':'stroke','stroke-linejoin':'round'},s);}
+function badge(x,y,n,col){el('circle',{cx:x,cy:y,r:15,fill:col||INK});T(x,y+6,n,{size:17,fill:'#fff',nohalo:true});}
+el('rect',{x:0,y:0,width:CFG.W,height:CFG.H,fill:'#ffffff'});
+el('polygon',{points:P([[150,150],[400,140],[470,125],[620,128],[820,120],[900,190],[960,330],[1010,400],[1000,455],[800,510],[600,585],[430,590],[270,540],[190,430],[140,330]]),fill:'#f6f4ef',stroke:'#d9d5cc','stroke-width':1.5,'stroke-dasharray':'6 5'});
+
+var d=el('defs',{});
+d.innerHTML='<marker id="ao" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0L10,5L0,10z" fill="'+OR+'"/></marker><marker id="ag" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0L10,5L0,10z" fill="#1fa869"/></marker>';
+function call(x1,y1,x2,y2,n,col,title,l2,l3,anchor){
+ el('line',{x1:x1,y1:y1,x2:x2,y2:y2,stroke:col,'stroke-width':1.5});el('circle',{cx:x1,cy:y1,r:3.5,fill:col});
+ var a=anchor||'start',dx=a==='start'?1:-1;badge(x2+dx*18,y2,n,col);var tx=x2+dx*40;
+ T(tx,y2+7,title,{size:20,anchor:a});
+ if(l2)T(tx,y2+29,l2,{size:20,anchor:a});
+}
+CUR='zr';el('polygon',{points:'598,262 636,200 668,138 716,163 770,172 838,205 838,432 1176,432 1176,506 1040,508 760,516 565,550 527,510 545,441 590,395',fill:'#fff3f3',stroke:'#e02424','stroke-width':3,'stroke-dasharray':'12 6','stroke-linejoin':'round'});
+CUR='zb';el('polygon',{points:'1168,195 1215,192 1250,215 1300,280 1336,365 1330,430 1335,500 1240,506 1238,456 1190,456 1168,432',fill:'#eef4ff',stroke:'#1f4fd6','stroke-width':3,'stroke-dasharray':'12 6','stroke-linejoin':'round'});
+CUR='base';el('polygon',{points:P([[388,62],[415,40],[440,85],[460,98],[440,135],[415,125],[372,88]]),fill:'#eceae4',stroke:'#8d9197','stroke-width':1.5});
+T(602,118,'EDIFICIO',{mono:true,size:11,fill:SUB});T(602,132,'KINI',{mono:true,size:11,fill:SUB});
+CUR='paddock';el('polygon',{points:P([[262,392],[520,357],[705,352],[930,345],[995,405],[995,445],[790,500],[598,572],[560,543],[270,522]]),fill:'#f7f0fb',stroke:'#9b4fd0','stroke-width':3});
+badge(700,668,'1','#9b4fd0');T(730,676,'PADDOCK · PARKING DE PILOTOS',{size:30,anchor:'start'});
+
+CUR='base';el('polygon',{points:P([[372,532],[438,548],[432,578],[366,560]]),fill:'#fff',stroke:'#8d9197','stroke-width':1.5});
+
+CUR='pc';el('rect',{x:578*K,y:153*K,width:215*K,height:136*K,fill:'#f1f2f3',stroke:'#5d6368','stroke-width':4});
+[['MOTOCROSS',600],['ENDURO',675],['EXTREME',750]].forEach(function(c,i){CUR='ex'+i;var x=c[1]*K;el('rect',{x:x,y:153*K-5,width:34,height:10,fill:'#33d488'});
+ el('line',{x1:x+17,y1:153*K-8,x2:x+17,y2:153*K-30,stroke:'#1fa869','stroke-width':3,'marker-end':'url(#ag)'});
+ T(x+17,160,'SALIDA CIRCUITO',{mono:true,size:10,fill:'#1fa869',w:700});T(x+17,180,c[0],{size:17,fill:'#1fa869'});});
+CUR='pc';badge(895,326,'4','#5d6368');T(922,336,'PARQUE CERRADO',{size:30,anchor:'start'});
+
+CUR='food';el('polygon',{points:P([[423,177],[497,188],[484,270],[412,256]]),fill:'#eefaf3',stroke:'#1fa869','stroke-width':4});
+badge(665,300,'6','#1fa869');T(665,338,'FOOD',{size:21});T(665,360,'TRUCKS',{size:21});
+el('rect',{x:738,y:292,width:58,height:96,fill:'#f6fbf8',stroke:'#1fa869','stroke-width':1.5,'stroke-dasharray':'5 4'});
+[[755,312],[780,312],[755,340],[780,340],[755,368],[780,368]].forEach(function(p){el('circle',{cx:p[0],cy:p[1],r:6,fill:'#fff',stroke:'#1fa869','stroke-width':1.5});});
+T(767,404,'MESAS',{size:16,fill:'#1fa869'});
+CUR='amb';el('polygon',{points:P([[412,268],[437,275],[424,318],[398,338],[380,318]]),fill:'#fdf0ee',stroke:'#d9534f','stroke-width':3});
+badge(598,440,'10','#d9534f');T(560,514,'ZONA RESERVADA',{size:19});T(560,535,'AMBULANCIAS',{size:19});
+CUR='pod';el('polygon',{points:'673,143 643,197 681,219 711,165',fill:'#fff',stroke:INK,'stroke-width':3});
+badge(677,181,'7',INK);T(640,218,'PODIUM · ESCENARIO',{size:18,anchor:'end'});
+CUR='crono';el('rect',{x:784,y:188,width:52,height:24,fill:'#fbeef5',stroke:'#b0407a','stroke-width':2.5});
+badge(770,200,'8','#b0407a');T(840,236,'CRONOMETRAJE',{size:17,anchor:'end'});
+CUR='expo';el('rect',{x:582*K,y:316*K,width:122*K,height:33*K,fill:'#fffbe3',stroke:'#c9a400','stroke-width':3});
+badge(872,486,'5','#c9a400');T(895,493,'ZONA EXPO',{size:21,anchor:'start'});
+
+CUR='insc';el('rect',{x:1044,y:465,width:136,height:48,fill:'#f9ece6',stroke:'#a8502f','stroke-width':3});
+badge(1112,489,'2','#a8502f');T(1112,546,'INSCRIPCIONES',{size:24});
+CUR='vol';el('rect',{x:1184,y:465,width:48,height:48,fill:'#e4e4e4',stroke:'#141413','stroke-width':3});
+call(1208,465,1300,428,'12','#141413','VOLUNTARIOS','Y MARSHALS','','start');
+
+CUR='cc';el('polygon',{points:P([[848,328],[877,327],[876,344],[849,343]]),fill:'#fff1e8',stroke:OR,'stroke-width':3});
+call(1283,490,1350,515,'11',OR,'CENTRO','DE CONTROL','','start');
+CUR='verif';el('rect',{x:832*K,y:242*K,width:36*K,height:18*K,fill:'#fff1e3',stroke:'#e08a2e','stroke-width':2.5});
+call(1269,367,1335,325,'3','#e08a2e','VERIFICACIONES','','','start');
+CUR='mini';el('polygon',{points:P([[155,232],[200,210],[238,262],[268,333],[180,333],[190,290]]),fill:'#fff7dc',stroke:'#d6a21a','stroke-width':3});
+badge(310,410,'9','#d6a21a');
+T(228,510,'KTM MINI TRACK',{size:20,anchor:'start'});T(228,532,'CIRCUITO NIÑOS',{size:20,anchor:'start'});
+CUR='zr';T(1008,455,'SOLO PEATONES · MOTOS NO',{size:21,fill:'#e02424'});
+CUR='zb';T(1236,262,'ZONA',{size:21,fill:'#1f4fd6'});T(1236,285,'MOTOS',{size:21,fill:'#1f4fd6'});
+CUR='cam';function flow(dd){el('path',{d:dd,fill:'none',stroke:OR,'stroke-width':4,'stroke-dasharray':'10 7','marker-end':'url(#ao)'});}
+flow('M 1312 630 C 1312 540, 1300 450, 1245 418 L 1172 398');
+CUR='ped';el('path',{d:'M 660 612 L 660 548',fill:'none',stroke:'#1fbf75','stroke-width':4,'stroke-dasharray':'9 7','marker-end':'url(#ag)'});T(674,602,'ACCESO PEATONAL',{size:15,fill:'#1fa869',anchor:'start'});CUR='cam';
+T(1330,592,'CAMINO DE MOTOS',{size:17,fill:OR,anchor:'start'});T(1330,612,'PARKING → PARQUE CERRADO',{size:14,fill:OR,anchor:'start'});
+CUR='base';T(1540,70,'N',{size:26});el('path',{d:'M1540 80 L1550 120 L1540 110 L1530 120 Z',fill:INK});
+})();
+</script></body></html>
