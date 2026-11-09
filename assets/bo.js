@@ -102,3 +102,21 @@ nav.parentNode.insertBefore(a, nav.nextSibling);
 }
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go); else go();
 })();
+
+/* Áreas NO visibles para voluntarios: se ocultan de la pestaña Áreas */
+(function () {
+var HIDE = ['A01', 'A08', 'A09', 'A11', 'A12', 'A24'];
+function go() {
+var tiles = [].slice.call(document.querySelectorAll('.atile'));
+if (!tiles.length) return;
+tiles.forEach(function (t) {
+var m = (t.textContent || '').match(/A\d{2}/);
+if (m && HIDE.indexOf(m[0]) >= 0) t.style.display = 'none';
+});
+[].slice.call(document.querySelectorAll('.grp')).forEach(function (g) {
+var vis = [].slice.call(g.querySelectorAll('.atile')).filter(function (t) { return t.style.display !== 'none'; });
+if (g.querySelector('.atile') && !vis.length) g.style.display = 'none';
+});
+}
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go); else go();
+})();
