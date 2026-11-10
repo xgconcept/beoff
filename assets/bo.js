@@ -93,12 +93,16 @@ function go() {
 var nav = document.querySelector('nav.tabs');
 if (!nav || document.querySelector('.mapbtn')) return;
 var st = document.createElement('style');
-st.textContent = '.mapbtn{display:flex;align-items:center;gap:12px;margin:0 0 16px;padding:13px 16px;border-radius:12px;background:#1d5fd1;color:#fff;text-decoration:none;box-shadow:0 2px 0 rgba(0,0,0,.18)}.mapbtn svg{width:26px;height:26px;flex:none;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.mapbtn b{display:block;font-size:15px;letter-spacing:.04em}.mapbtn span{display:block;font-size:12.5px;opacity:.92}.mapbtn:after{content:"\\203A";margin-left:auto;font-size:26px;line-height:1}';
+st.textContent = '.mapbtn{display:flex;align-items:center;gap:12px;margin:0 0 16px;padding:13px 16px;border-radius:12px;background:#1d5fd1;color:#fff;text-decoration:none;box-shadow:0 2px 0 rgba(0,0,0,.18)}.mapbtn svg{width:26px;height:26px;flex:none;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.mapbtn b{display:block;font-size:15px;letter-spacing:.04em}.mapbtn span{display:block;font-size:12.5px;opacity:.92}.mapbtn.nav{background:#e8590c}.mapbtn:after{content:"\\203A";margin-left:auto;font-size:26px;line-height:1}';
 document.head.appendChild(st);
 var a = document.createElement('a');
 a.className = 'mapbtn'; a.href = '../mapa/';
 a.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4 3 6.5v14L9 18l6 2.5 6-2.5v-14L15 6.5z"/><path d="M9 4v14M15 6.5v14"/></svg><div><b>MAPA DE UBICACIONES</b><span>Toca para ver dónde está cada zona del recinto</span></div>';
 nav.parentNode.insertBefore(a, nav.nextSibling);
+var c = document.createElement('a');
+c.className = 'mapbtn nav'; c.href = 'https://maps.app.goo.gl/DqUsN3i5ZruTkFd7A'; c.target = '_blank'; c.rel = 'noopener';
+c.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><div><b>CÓMO LLEGAR AL CIRCUITO</b><span>Toca y tu móvil te navega hasta Kini Motor Park</span></div>';
+a.parentNode.insertBefore(c, a.nextSibling);
 }
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go); else go();
 })();
@@ -117,6 +121,22 @@ if (m && HIDE.indexOf(m[0]) >= 0) t.style.display = 'none';
 var vis = [].slice.call(g.querySelectorAll('.atile')).filter(function (t) { return t.style.display !== 'none'; });
 if (g.querySelector('.atile') && !vis.length) g.style.display = 'none';
 });
+}
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go); else go();
+})();
+
+/* Caja «Al llegar al evento» (solo ¿Cuándo me toca?): resaltada al inicio */
+(function () {
+function go() {
+var anchor = document.querySelector('.tabs-k');
+if (!anchor || document.querySelector('.llega')) return;
+var st = document.createElement('style');
+st.textContent = '.llega{background:var(--paper,#fff);border:2px solid #f5b800;border-radius:10px;padding:12px 16px;margin:0 0 16px;display:grid;gap:6px;font-size:15px}.llega p{margin:0}.llega .llg{display:inline-block;background:var(--acc,#e8590c);color:#fff;font:800 15px var(--ft,Arial);letter-spacing:.04em;text-transform:uppercase;text-decoration:none;border-radius:8px;padding:9px 14px}.llega .lk{font:700 11px var(--fm,monospace);letter-spacing:.12em;text-transform:uppercase;color:var(--acc,#e8590c)}';
+document.head.appendChild(st);
+var s = document.createElement('section');
+s.className = 'llega';
+s.innerHTML = '<span class="lk">Al llegar al evento</span><p>La primera vez que llegues, ve a <b>INSCRIPCIONES</b> (Kini Motor Park, Castellolí) y pregunta por <b>Xavi Galindo</b>. Te daremos la ropa de voluntario y te explicaremos tu puesto. </p><p><a class="llg" href="https://maps.app.goo.gl/DqUsN3i5ZruTkFd7A" target="_blank" rel="noopener">Cómo llegar al circuito →</a></p><p>Revisa tus horas y tu puesto en tu ficha. <b>No hace falta confirmar nada.</b></p>';
+anchor.parentNode.insertBefore(s, anchor);
 }
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go); else go();
 })();
