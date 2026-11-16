@@ -1,4 +1,4 @@
-var ENDPOINT = ''; // URL /exec del Apps Script. Vacío = vista previa: no se envía nada.
+var ENDPOINT = 'https://script.google.com/macros/s/AKfycbxqu-1Nglmw4sHLh2X1ix0HKahOIgggBnTyOmQLC7LRTsTLBNhrhIT9WB_M8uCs68OZfA/exec'; // URL /exec del Apps Script. Vacío = vista previa: no se envía nada.
 var C = window.ENCUESTA;
 var FOOT = '<div class="foot"><span>BeOFF Offroad Festival · Kini Motor Park</span><span>KTM · GASGAS · Husqvarna</span></div>';
 
