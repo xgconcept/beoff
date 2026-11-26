@@ -104,19 +104,25 @@ body{margin:0;background:var(--color-bg)}
   .mb-mat-l{grid-column:1/-1}
 }
 
-.mb-tabs{position:sticky;top:0;z-index:20;display:flex;gap:8px;padding:10px 0;background:var(--color-bg);border-bottom:1px solid var(--color-border-line);overflow-x:auto;scroll-margin-top:0}
-.mb-tab{--t:#1F1E1D;font:inherit;font-family:var(--mb-cifra);font-weight:700;font-size:1.05rem;letter-spacing:.03em;text-transform:uppercase;color:var(--t);background:var(--color-panel);border:2px solid var(--t);border-radius:999px;padding:10px 22px;cursor:pointer;white-space:nowrap;display:flex;gap:8px;align-items:baseline;transition:background .15s,color .15s}
-.mb-tab[data-tab="inscritos"]{--t:#3D6FD8}
-.mb-tab[data-tab="voluntarios"]{--t:#E8833A}
-.mb-tab[data-tab="marcas"]{--t:#4FA58A}
-.mb-tab:hover{background:color-mix(in srgb,var(--t) 12%,var(--color-panel))}
-.mb-tab[aria-selected="true"]{background:var(--t);color:#fff;box-shadow:0 3px 10px color-mix(in srgb,var(--t) 35%,transparent)}
-.mb-tab-n{font-variant-numeric:tabular-nums;opacity:.8}
-.mb-panel{border-top:4px solid var(--t,transparent);padding-top:12px}
-#inscritos{--t:#3D6FD8}#voluntarios{--t:#E8833A}#marcas{--t:#4FA58A}
+.mb-tabs{position:sticky;top:0;z-index:20;display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:12px 0;background:var(--color-bg);border-bottom:1px solid var(--color-border-line)}
+.mb-tabs-t{font-family:var(--mb-cifra);font-weight:700;font-size:.95rem;letter-spacing:.06em;text-transform:uppercase;color:var(--color-fg-muted);margin-right:4px}
+.mb-tab{--t:#1F1E1D;flex:1 1 160px;justify-content:center;font:inherit;font-family:var(--mb-cifra);font-weight:700;font-size:1.25rem;letter-spacing:.04em;text-transform:uppercase;color:var(--t);background:color-mix(in srgb,var(--t) 16%,var(--color-panel));border:2px solid var(--t);border-radius:12px;padding:14px 22px;cursor:pointer;white-space:nowrap;display:flex;gap:10px;align-items:baseline;transition:background .15s,color .15s,transform .15s}
+.mb-tab[data-tab="inscritos"]{--t:#2F62D0}
+.mb-tab[data-tab="voluntarios"]{--t:#E2701F}
+.mb-tab[data-tab="marcas"]{--t:#2F9374}
+.mb-tab:hover{background:color-mix(in srgb,var(--t) 30%,var(--color-panel))}
+.mb-tab[aria-selected="true"]{background:var(--t);color:#fff;box-shadow:0 4px 14px color-mix(in srgb,var(--t) 40%,transparent);transform:translateY(-1px)}
+.mb-tab-n{font-variant-numeric:tabular-nums;opacity:.85}
+.mb-panel{border-top:6px solid var(--t,transparent);padding-top:14px}
+#inscritos{--t:#2F62D0}#voluntarios{--t:#E2701F}#marcas{--t:#2F9374}
 
 </style></head><body><div class="pagina">
 <div class="mb">
+  <nav class="mb-tabs" id="pestanas" role="tablist" aria-label="Encuesta que se muestra"><span class="mb-tabs-t">Ver encuesta</span>
+    <button type="button" class="mb-tab" role="tab" data-tab="inscritos" aria-selected="true" aria-controls="inscritos" id="pestana-inscritos">Pilotos <span class="mb-tab-n" data-draw="kpi" data-source="ins_kpis" data-field="respuestas">—</span></button>
+    <button type="button" class="mb-tab" role="tab" data-tab="voluntarios" aria-selected="false" aria-controls="voluntarios" id="pestana-voluntarios" tabindex="-1">Equipo <span class="mb-tab-n" data-draw="kpi" data-source="vol_kpis" data-field="respuestas">—</span></button>
+    <button type="button" class="mb-tab" role="tab" data-tab="marcas" aria-selected="false" aria-controls="marcas" id="pestana-marcas" tabindex="-1">Marcas <span class="mb-tab-n" data-draw="kpi" data-source="mar_kpis" data-field="respuestas">—</span></button>
+  </nav>
   <header class="mb-head" id="cabecera">
     <div class="mb-head-t">
       <p class="mb-eyebrow">BeOFF Offroad Festival 2026 · Kini Motor Park, Castellolí · 14 de noviembre</p>
@@ -180,11 +186,6 @@ body{margin:0;background:var(--color-bg)}
     <div class="mb-ritmo" data-draw="ritmo"></div>
   </section>
 
-  <nav class="mb-tabs" id="pestanas" role="tablist" aria-label="Encuesta que se muestra">
-    <button type="button" class="mb-tab" role="tab" data-tab="inscritos" aria-selected="true" aria-controls="inscritos" id="pestana-inscritos">Pilotos <span class="mb-tab-n" data-draw="kpi" data-source="ins_kpis" data-field="respuestas">—</span></button>
-    <button type="button" class="mb-tab" role="tab" data-tab="voluntarios" aria-selected="false" aria-controls="voluntarios" id="pestana-voluntarios" tabindex="-1">Equipo <span class="mb-tab-n" data-draw="kpi" data-source="vol_kpis" data-field="respuestas">—</span></button>
-    <button type="button" class="mb-tab" role="tab" data-tab="marcas" aria-selected="false" aria-controls="marcas" id="pestana-marcas" tabindex="-1">Marcas <span class="mb-tab-n" data-draw="kpi" data-source="mar_kpis" data-field="respuestas">—</span></button>
-  </nav>
 
   <section class="mb-panel" id="inscritos" role="tabpanel" aria-labelledby="pestana-inscritos">
     <h2 class="mb-h2">Pilotos: lo que sale peor valorado</h2>
@@ -786,12 +787,13 @@ const abrirPestana = (id, mover) => {
   });
   history.replaceState(null, '', '#' + id);
   if (mover) {
-    const nav = document.querySelector('.mb-tabs');
-    if (nav) nav.scrollIntoView({block: 'start', behavior: 'smooth'});
+    const nav = document.querySelector('.mb-tabs'), panel = document.getElementById(id);
+    const y = panel.getBoundingClientRect().top + window.scrollY - (nav ? nav.offsetHeight : 0) - 8;
+    window.scrollTo({top: y, behavior: 'smooth'});
   }
 };
 document.querySelectorAll('[data-tab]').forEach((b) => {
-  b.addEventListener('click', () => abrirPestana(b.dataset.tab, b.classList.contains('mb-ir')));
+  b.addEventListener('click', () => abrirPestana(b.dataset.tab, true));
 });
 dash.drawAll();
 const inicial = (location.hash || '').replace(/^#/, '');
