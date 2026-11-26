@@ -28,10 +28,6 @@ body{margin:0;background:var(--color-bg)}
 .mb-ritmo{position:relative;min-height:232px}
 .mb-svg-v{font-family:var(--mb-cifra);font-weight:700;font-size:1.05rem;fill:var(--color-fg);font-variant-numeric:tabular-nums}
 .mb-svg-x{font-size:var(--cds-font-size-caption);fill:var(--cds-text-secondary)}
-.mb-tabs{display:flex;gap:var(--cds-gap-xs);border-bottom:1px solid var(--color-border-line);overflow-x:auto;scroll-margin-top:var(--cds-pad-lg)}
-.mb-tab{font:inherit;color:var(--color-fg-muted);background:none;border:0;border-bottom:2px solid transparent;padding:var(--cds-pad-sm) var(--cds-pad-md);cursor:pointer;white-space:nowrap;display:flex;gap:var(--cds-gap-xs);align-items:baseline}
-.mb-tab[aria-selected="true"]{color:var(--color-fg);border-bottom-color:var(--color-fg);font-weight:var(--cds-font-weight-medium)}
-.mb-tab-n{font-family:var(--mb-cifra);font-weight:700;font-size:1.05em;font-variant-numeric:tabular-nums;color:var(--color-fg-muted)}
 .mb-panel{display:flex;flex-direction:column;gap:var(--cds-gap-lg);min-width:0}
 .mb-panel[hidden],.mb-tip[hidden]{display:none}
 .mb-draw{position:relative;min-height:160px;min-width:0}
@@ -107,6 +103,17 @@ body{margin:0;background:var(--color-bg)}
   .mb-al-q{grid-column:1/-1;grid-row:2}
   .mb-mat-l{grid-column:1/-1}
 }
+
+.mb-tabs{position:sticky;top:0;z-index:20;display:flex;gap:8px;padding:10px 0;background:var(--color-bg);border-bottom:1px solid var(--color-border-line);overflow-x:auto;scroll-margin-top:0}
+.mb-tab{--t:#1F1E1D;font:inherit;font-family:var(--mb-cifra);font-weight:700;font-size:1.05rem;letter-spacing:.03em;text-transform:uppercase;color:var(--t);background:var(--color-panel);border:2px solid var(--t);border-radius:999px;padding:10px 22px;cursor:pointer;white-space:nowrap;display:flex;gap:8px;align-items:baseline;transition:background .15s,color .15s}
+.mb-tab[data-tab="inscritos"]{--t:#3D6FD8}
+.mb-tab[data-tab="voluntarios"]{--t:#E8833A}
+.mb-tab[data-tab="marcas"]{--t:#4FA58A}
+.mb-tab:hover{background:color-mix(in srgb,var(--t) 12%,var(--color-panel))}
+.mb-tab[aria-selected="true"]{background:var(--t);color:#fff;box-shadow:0 3px 10px color-mix(in srgb,var(--t) 35%,transparent)}
+.mb-tab-n{font-variant-numeric:tabular-nums;opacity:.8}
+.mb-panel{border-top:4px solid var(--t,transparent);padding-top:12px}
+#inscritos{--t:#3D6FD8}#voluntarios{--t:#E8833A}#marcas{--t:#4FA58A}
 
 </style></head><body><div class="pagina">
 <div class="mb">
